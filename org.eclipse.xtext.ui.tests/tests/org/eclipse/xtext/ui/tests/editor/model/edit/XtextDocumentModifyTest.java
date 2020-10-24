@@ -46,7 +46,7 @@ public class XtextDocumentModifyTest extends AbstractXtextTests {
 
 	@Test
 	public void testProcess() throws Exception {
-		String grammar = "grammar foo.Foo " + "generate foo \"foo://foo/42\" " + "Foo: \"foo\" | \"bar\" | \"baz\"; " + "Bar: foo=Foo;";
+		String grammar = "grammar foo.Foo " + "generate foo \"foo://foo/42\" " + "Foo: \"foo\" | \"bar\" | \"baz\"; " + "Bar: foo=Foo;\n";
 		IXtextDocument document = createDocument(grammar);
 
 		final Object expected = resource.getContents().get(0);
@@ -72,7 +72,7 @@ public class XtextDocumentModifyTest extends AbstractXtextTests {
 			"generate foo \"http://foo.net/foo\"", 
 			"Foo: // comment in Foo ",
 			"// comment before Assignment",
-			"  bars+=/* comment in assignment */Bar // comment after assignment",
+			"  bars+= /* comment in assignment */ Bar // comment after assignment",
 			"// comment before keywod",
 			"'foo';", 
 			"Bar: 'bar';");
@@ -99,7 +99,7 @@ public class XtextDocumentModifyTest extends AbstractXtextTests {
 		String grammar = text(
 				"grammar foo.Foo", 
 				"generate foo \"http://foo.net/foo\"",
-				"Foo: 'foo';"); 
+				"Foo: 'foo';",""); 
 		// @formatter:on
 		IXtextDocument document = createDocument(grammar);
 		document.modify(new IUnitOfWork.Void<XtextResource>() {

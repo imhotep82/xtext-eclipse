@@ -19,5 +19,10 @@ public class DefaultTextEditComposerTest extends AbstractTextEditComposerTest {
 	protected ITextEditComposer createComposer() {
 		return get(ITextEditComposer.class);
 	}
+	
+	@Override
+	protected String getBarFooExpectation() {
+		return "Bar: 'foo' ;";
+	}
 
 }

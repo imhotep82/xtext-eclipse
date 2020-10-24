@@ -159,7 +159,11 @@ public abstract class AbstractTextEditComposerTest extends AbstractXtextTests {
 		TextEdit[] children = ((MultiTextEdit) edit).getChildren();
 		assertEquals(2, children.length);
 		assertMatches("'bar' | 'baz'", children[0]);
-		assertMatches("Bar: 'foo' ;", children[1]);
+		assertMatches(getBarFooExpectation(), children[1]);
+	}
+
+	protected String getBarFooExpectation() {
+		return "Bar: 'foo';";
 	}
 
 	private void assertMatches(String expected, TextEdit edit) {
